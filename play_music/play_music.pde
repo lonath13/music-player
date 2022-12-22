@@ -27,7 +27,22 @@ void keyPressed() {
   //infinate loop
   if (key=='I' || key=='i' ) song1.loop();//peramiter is empty, means infinate loop
   //
-  if () {} //end MUTE button
+  if (key=='M' || key=='m') { // MUTE button
+    //
+    if ( song1.isMuted() ) {
+      song1.unmute();
+    } else {
+      song1.mute();
+    }
+    //note: mute has no built in pause button and no built in rewind if song is near the end
+    //note this mute algorithm is not smart
+    //known ERROR once song playes mute acts like it doesn't work
+  } //end MUTE button
+  //
+  //fast foward and fast reverse
+  // built in question
+  if (key=='F' || key=='f') song1.skip( 1000 );// skip foward 1 second(1000 miliseconds)
+  if(key=='R' || key=='r') song1.skip( -1000 );// skip backwards 1 second, notice negitive, (1000 miliseconds)
 }//End keyPressed
 //
 void mouseClicked() {
