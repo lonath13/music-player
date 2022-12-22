@@ -24,6 +24,10 @@ void keyPressed() {
   if ( key=='P' || key=='p' ) song1.play(); //Parameter is milli-seconds from start of audio file to start playing
   //second play button, Loop ONCE
   if ( key=='L' || key=='l' ) song1.loop(1);//parameter is number of repeats
+  //infinate loop
+  if (key=='I' || key=='i' ) song1.loop();//peramiter is empty, means infinate loop
+  //
+  if () {} //end MUTE button
 }//End keyPressed
 //
 void mouseClicked() {
