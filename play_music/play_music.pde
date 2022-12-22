@@ -19,30 +19,48 @@ void draw() {
 }//End draw
 //
 void keyPressed() {
-  //key boar short cuts
-  //First play button
-  if ( key=='P' || key=='p' ) song1.play(); //Parameter is milli-seconds from start of audio file to start playing
-  //second play button, Loop ONCE
-  if ( key=='L' || key=='l' ) song1.loop(1);//parameter is number of repeats
-  //infinate loop
-  if (key=='I' || key=='i' ) song1.loop();//peramiter is empty, means infinate loop
+  //Key Board Short Cuts
+  //First Play Button
+  //if ( key=='P' || key=='p' ) song1.play(); //Parameter is milli-seconds from start of audio file to start playing
+  
+  
+  //PLAY PAUSE Feature
+  if (key=='P' || key=='p') {}//End PLAY PAUSE Feature
+  if () {} else {}
+  if () song1.play(); //Parameter is milli-seconds from start of audio file to start playing
+  
+  
+  //Second Play Button, Loop ONCE
+  if ( key=='L' || key=='l'  ) song1.loop(1); //Parameter is Parameter is number of repeats
+  //Infinite Loop
+  if ( key=='I' || key=='i' ) song1.loop(); //Parameter is empty, means infinite looping (could be -1)
   //
-  if (key=='M' || key=='m') { // MUTE button
-    //
-    if ( song1.isMuted() ) {
+  if ( key=='M' || key=='m' ) { //MUTE Button
+    //Note: Mute has NO built-in pause button and NO built-in rewind if the song is near the end of the file
+    //Note: this MUTE algorithm is not smart
+    //Known ERROR: once song plays, MUTE acts like it doesn't work
+    if ( song1.isMuted() ) { 
       song1.unmute();
-    } else {
+    } else { 
       song1.mute();
     }
-    //note: mute has no built in pause button and no built in rewind if song is near the end
-    //note this mute algorithm is not smart
-    //known ERROR once song playes mute acts like it doesn't work
-  } //end MUTE button
+  } //End MUTE Button
   //
-  //fast foward and fast reverse
-  // built in question
-  if (key=='F' || key=='f') song1.skip( 1000 );// skip foward 1 second(1000 miliseconds)
-  if(key=='R' || key=='r') song1.skip( -1000 );// skip backwards 1 second, notice negitive, (1000 miliseconds)
+  //Fast Forward & Fast Reverse
+  //Built in Question, .isPlaying(), not necessary
+  if ( key == 'F' || key == 'f' ) song1.skip( 1000 ); // skip forward 1 second (1000 milliseconds)
+  if ( key == 'R' || key == 'r' ) song1.skip( -1000 ); // skip backwards 1 second, notice negative, (1000 milliseconds)
+  //
+  //STOP Button
+  if ( key == 'S' || key == 's' ) {
+    if ( song1.isPlaying() ) {
+      song1.pause();
+      song1.rewind(); //Cue SONG to play from beginning
+    } else {
+      song1.rewind(); //Not playing means song is paused or song position is at the end of the file
+    }
+  }//End STOP Button
+  //
 }//End keyPressed
 //
 void mouseClicked() {
